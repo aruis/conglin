@@ -32,7 +32,7 @@ class Application {
             result += '\n'
         }
 
-        new File('D\\result.csv') << result
+        new File('D:\\result.csv') << result
     }
 
 
@@ -42,7 +42,12 @@ class Application {
 
         result << children
         children.each {
-            result << getChildren(it)
+            if(it == item){
+                new File('D:\\error.txt') << "$it 数据有误"
+            }else{
+                result << getChildren(it)
+            }
+
         }
 
         return result.flatten()
