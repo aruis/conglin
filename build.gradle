@@ -1,0 +1,33 @@
+group 'conglin'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'groovy'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Application'
+    }
+}
+
+sourceCompatibility = 1.8
+def vertxVersion = '3.3.3'
+def groovyVersion = '2.4.7'
+
+dependencies {
+    compile 'org.apache.poi:poi:3.15'
+    compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+}
