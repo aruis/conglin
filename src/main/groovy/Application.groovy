@@ -18,7 +18,7 @@ class Application {
             list << map
         }
 
-        def result = ''
+        def result = '用户,子用户数,子份数,子用户\n'
         list.each {
             def _children = getChildren(it)
             it.total = 0
@@ -28,7 +28,7 @@ class Application {
                 _childrenStr += child.id + ','
             }
 
-            result += "$it.id,$it.total,$_childrenStr"
+            result += "$it.id,${_children.size()},$it.total,$_childrenStr"
             result += '\n'
         }
 
@@ -42,9 +42,9 @@ class Application {
 
         result << children
         children.each {
-            if(it == item){
+            if (it == item) {
                 new File('D:\\error.txt') << "$it 数据有误"
-            }else{
+            } else {
                 result << getChildren(it)
             }
 
